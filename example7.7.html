@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capture/Bubble</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    function clickMe(evnt) {
+        var eventTarget = evnt.target ? evnt.target : evnt.srcElement;
+        alert(eventTarget + " " + evnt.type);
+        
+        var canBeCanceled = evnt.cancelable ? evnt.cancelable : "NA";
+        alert("Can be canceled ?" + canBeCanceled);
+
+        var bubbleEvent = evnt.bubbles ? evnt.bubbles : "NA";
+        alert("Bubbling?" + bubbleEvent);
+
+        var theTime = evnt.timeStamp ? evnt.timeStamp : "NA";
+        alert(theTime);
+    }
+
+    window.onload = setup;
+    window.onunload = cleanup;
+
+    function setup(evnt) {
+        var evtObject = document.getElementById("clickme");
+
+        if (evtObject.addEventListener) {
+            evtObject.addEventListener("click", clickMe, false);
+        }
+        else if(evtObject.attachEvent) {
+            evtObject.attachEvent("onclick", clickMe);
+        }
+        else if (evtObject.onclick) {
+            evtObject.onclick = clickMe;
+        }
+    }
+
+    function cleanup() {
+        var evtObject = document.getElementById("clickme");
+        if (evtObject.detachEvent) {
+            evtObject.detachEvent("onclick", clickMe);
+        }
+    }
+
+    //]]>
+    </script>
+
+</head>
+
+
+<body>
+    <div id="clickme" style="background-color:#ff0; width:200px; height:200px; padding:20px" action="">
+        <p>
+            Click Me
+        </p>
+    </form>
+</body>
+</html>
