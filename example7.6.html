@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capture/Bubble</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    function cascadeDown(evnt) {
+        alert("Capturing: "+this);
+    }
+
+    function bubbleUp(evnt) {
+        alert("Bubbling: "+this);
+        //evnt.stopPropagation();
+    }
+
+    window.onload=setup;
+
+    function setup(evnt) {
+
+        // cascade
+        document.addEventListener("click", cascadeDown, true);
+        
+        document.forms[0].addEventListener('click', cascadeDown, true);
+        document.forms[0].elements[0].addEventListener('click', cascadeDown, true);
+
+        // bubble
+        document.addEventListener('click', bubbleUp, false);
+
+        document.forms[0].addEventListener('click', bubbleUp, false);
+        document.forms[0].elements[0].addEventListener('click', bubbleUp, false);
+    }
+
+    //]]>
+    </script>
+
+</head>
+
+
+<body>
+    <form style="background-color:#f00; width:100px; height:100px; padding:10px" action="">
+        <p>
+            <input type="submit" value="Submit" /><br />
+        </p>
+    </form>
+</body>
+</html>
