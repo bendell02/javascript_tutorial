@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The JiT RegEx machine</title>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function catchEvent(eventObj, event, eventHandler) {
+            if (eventObj.addEventListener) {
+                eventObj.addEventListener(event, eventHandler, false);
+            }
+            else if (event.attachEvent) {
+                event = "on" + event;
+                eventObj.attachEvent(event, eventHandler);
+            }
+        }
+
+        function cancelEvent(event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            else {
+                event.returnValue = false;
+                event.cancelBubble = true;
+            }
+        }
+
+        catchEvent(window, "load", setupEvents);
+
+        function setupEvents(evnt) {
+            // document.someForm.onsubmit = validateField;
+            catchEvent(document.getElementById("someForm"), "submit", validateField);
+        }
+
+        function validateField(evnt) {
+            var theEvet = evnt ? evnt : window.event;
+
+            var rgEx = new RegExp(document.getElementById("text1").value);
+            var OK = rgEx.exec(document.getElementById("text2").value);
+
+            if(!OK) {
+                document.getElementById("text3").value = "Not a match";
+            }
+            else {
+                document.getElementById("text3").value = "The Pattern matched!";
+            }
+
+            cancelEvent(theEvet);
+        }
+        
+        //]]>
+    </script>
+
+</head>
+<body>
+    <form id="someForm" style="padding: 10px">
+        Regular Expression: <input type="text" id="text1" /> <br/> <br/>
+        <textarea id="text2" cols="50" rows="10"></textarea> <br/>
+        Result: <input type="text" id="text3"/> <br/> <br/>
+        <input type="submit" value="Check RegExp"/>
+    </form>
+</body>
+</html>
