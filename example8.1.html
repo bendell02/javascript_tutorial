@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select</title>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function catchEvent(eventObj, event, eventHandler) {
+            if (eventObj.addEventListener) {
+                eventObj.addEventListener(event, eventHandler, false);
+            }
+            else if (event.attachEvent) {
+                event = "on" + event;
+                eventObj.attachEvent(event, eventHandler);
+            }
+        }
+
+        catchEvent(window, "load", setupEvent);
+
+        function setupEvent(evnt) {
+            catchEvent(document.getElementById("someForm"), "submit", checkForm);
+        }
+
+        function checkForm(evnt) {
+            // var opts = document.getElementById("someForm").selectOpts.options;
+            var opts = document.getElementById("selecOpts").options;
+
+            for(var i=0; i<opts.length; i++) {
+
+                if(opts[i].selected) {
+                    alert(opts[i].text + " "+ opts[i].value);
+                }
+            }
+
+            return false;
+        }
+        
+        //]]>
+    </script>
+</head>
+<body>
+    <form id="someForm" action="">
+        <p>
+            <select id="selecOpts" multiple="multiple">
+                <option value="Opt1">Option One</option>
+                <option value="Opt2">Option Two</option>
+                <option value="Opt3">Option Three</option>
+            </select>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+</body>
+</html>
