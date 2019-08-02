@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Windows</title>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function catchEvent(eventObj, event, eventHandler) {
+            if (eventObj.addEventListener) {
+                eventObj.addEventListener(event, eventHandler, false);
+            }
+            else if (event.attachEvent) {
+                event = "on" + event;
+                eventObj.attachEvent(event, eventHandler);
+            }
+        }
+
+        catchEvent(window, "load", setupEvents);
+
+        function setupEvents(evnt) {
+            // var nmStr = opener.document.forms[0].elements[0].value;
+            var nmStr = "shelly";
+            console.log(nmStr);
+            document.writeln("<p>Hello "+nmStr+"! </p>");
+            document.writeln("<p><a href='' onclick='self.close(); return false'>Close</a></p>");
+        }
+        
+        //]]>
+    </script>
+</head>
+<body>
+    <p>some content</p>
+</body>
+</html>
