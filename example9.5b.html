@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frame B</title>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        window.onload=function() {
+            var theFrame = document.getElementById("thelink");
+            theFrame.onclick = function() {
+                parent.framea.location.replace("example9.5b.html");
+            }
+        }     
+        
+        //]]>
+    </script>
+</head>
+<body>
+    <h1>Frame B</h1>
+    <p><a href="" id="thelink">Steal this page</a></p>
+</body>
+</html>
