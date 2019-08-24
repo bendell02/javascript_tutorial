@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifying HTML Elements</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        window.onload = function() {
+            var img = document.images[0];
+
+            // get current attribute
+            var imgAttr = img.id + " " + img.alt + " " + img.className;
+            alert(imgAttr);
+
+
+            // modify the attribute
+            img.src = "example9.12_fig02.png";
+            img.width = "800";
+            img.height = "498";
+            img.alt = "Alternative";
+            img.align = "left";
+            img.title = "Osprey";
+        }
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p><img src="example9.12_fig01.png" alt="test image" class="testImage" id="original" /></p>
+</body>
+</html>
