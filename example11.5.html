@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page as Tree</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        window.onload = function() {
+            outputNodeProps(document.body);
+        }
+
+        function randomColor() {
+            var r = Math.floor(Math.random() * 255).toString(16);
+            r = (r.length<2) ? "0"+r: r;
+            var g = Math.floor(Math.random() * 255).toString(16);
+            g = (g.length<2) ? "0"+g : g;
+            var b = Math.floor(Math.random() * 255).toString(16);
+
+            b = (b.length<2) ? "0"+b : b;
+
+            return "#"+r+g+b;
+        }
+
+        function outputNodeProps(nd) {
+            var strNode = "Node Type: " + nd.nodeType;
+            strNode += "\nNode Name: " + nd.nodeName;
+            strNode += "\nNode Value: " + nd.nodeValue;
+
+            if(nd.style) {
+                var clr = randomColor();
+                nd.style.backgroundColor = clr;
+                strNode += "\nbackgroundColor: " + clr;
+            }
+
+            alert(strNode);
+
+            var children = nd.childNodes;
+            for(var i=0; i<children.length; i++) {
+                outputNodeProps(children[i]);
+            }
+        }
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <div id="div1">
+        <p>
+            To better understang the document tree, consider a web page that has a head and body
+                section, a page title, and the body contains a div element that
+                itself contains a header and two paragraphs. One of the paragraphs contains <i> italicized text</i>
+                ; the other has an image -- not an uncommon web page.
+    
+        </p>
+    
+        <p>
+            Second paragraph with image. <img src="example9.12_fig01.png" alt="something">
+        </p>
+
+    </div>
+
+</body>
+</html>
