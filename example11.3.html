@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifying HTML Elements</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        window.onload = function() {
+            var theLinks = document.links;
+            var theHrefs = document.getElementById("hrefs");
+
+            for(var i=0; i<theLinks.length; i++) {
+                var href = theLinks.item(i).href;
+                var p = document.createElement("p");
+                var txt = document.createTextNode(href);
+                p.appendChild(txt);
+
+                theHrefs.appendChild(p);
+            }
+        }
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p> The <a href="http://msdn.microsoft.com/">links</a>
+        collection off of the document
+        <a href="http://www.w3.org/">object</a>
+        consists of all hypertext links in the page, accessible as an array, starting with the first link in the page...
+        </p>
+    <p>Each item in the collection is a <a href="http://www.devguru.com/">link</a>object...</p>
+    
+    <div id="hrefs">
+        <h3>The links</h3>
+    </div>
+</body>
+</html>
