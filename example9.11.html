@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Links</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        window.onload = function() {
+            var links = "";
+            for(var i=0; i<document.links.length; i++) {
+                links = links + document.links[i].href + "\n\n";
+            }
+            alert(links);
+        }
+    
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p> The <a href="http://msdn.microsoft.com/">links</a>
+    collection off of the document
+    <a href="http://www.w3.org/">object</a>
+    consists of all hypertext links in the page, accessible as an array, starting with the first link in the page...
+    </p>
+    <p>Each item in the collection is a <a href="http://www.devguru.com/">link</a>object...</p>
+</body>
+</html>
