@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifying HTML Elements</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        
+        window.onload = function() {
+            var tb1 = document.getElementById("table1");
+            tb1.border = "5px";
+            tb1.cellPadding = "5px";
+
+            var img = document.getElementById("img1");
+
+            img.vspace = "10";
+
+            var row1 = tb1.insertRow(-1);
+
+            var cell1 = row1.insertCell(0);
+            var cell2 = row1.insertCell(1);
+
+            var txtAttr1 = document.createTextNode("src");
+            var txtAttr1Val = document.createTextNode(img.src);
+
+            cell1.appendChild(txtAttr1);
+            cell2.appendChild(txtAttr1Val);
+        }
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p><img src="example9.12_fig01.png" alt="test image" class="testImage" id="img1" /></p>
+    <table id="table1">
+        <tr><th>Attribute</th><th>Value</th></tr>
+    </table>
+</body>
+</html>
