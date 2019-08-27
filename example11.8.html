@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page as Tree</title>
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+        document.onclick = changeDoc;
+        
+        function changeDoc() {
+            // delete title
+            var hdr = document.getElementById("hdr1");
+            var div = document.getElementById("div1");
+            div.removeChild(hdr);
+
+            // replace the img with text
+            var img = document.getElementById("img1");
+            var p = document.getElementById("p2");
+            var txt = document.createTextNode("New text node");
+            p.replaceChild(txt, img);
+
+            // add a new node
+            var div2 = document.createElement("div");
+            div2.innerHTML="<h1>The End</h1>";
+            document.body.appendChild(div2);
+
+        }
+
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <div id="div1">
+        <h1 id="hdr1">Header</h1>
+
+        <p id="p1">
+            To better understang the document tree, consider a web page that has a head and body
+                section, a page title, and the body contains a div element that
+                itself contains a header and two paragraphs. One of the paragraphs contains <i> italicized text</i>
+                ; the other has an image -- not an uncommon web page.
+    
+        </p>
+
+    </div>
+    
+    <p id="p2">
+        Second paragraph with image. <img id="img1" src="example9.12_fig01.png" alt="something">
+    </p>
+
+</body>
+</html>
