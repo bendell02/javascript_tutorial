@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tune Object</title>
+
+    <style type="text/css">
+        
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var Tune = function(title) {
+            this.title = title;
+            var performedBy = new Array();
+            this.addPerformer = function(performer) {
+                var i = performedBy.length;
+                performedBy[i] = performer;
+            }
+
+            this.listPerformers = function() {
+                var singers = "";
+                for(var i=0; i<performedBy.length; i++) {
+                    singers += performedBy[i] + " ";
+                }
+                return singers;
+            }
+        } 
+
+
+        window.onload = function() {
+            var song = new Tune("Hello");
+            song.addPerformer("Me");
+            song.addPerformer("You");
+            song.addPerformer("Us");
+            document.writeln("Song is " + song.title);
+            document.writeln("Performed by " + song.listPerformers());
+        }
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p>some content</p>
+</body>
+</html>
