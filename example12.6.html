@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Overflow</title>
+
+    <style type="text/css">
+        div {
+            border: 1px solid #ccc;
+        }
+        #div1 {
+            width: 400px;
+            height: 150px;
+            overflow: visible;
+        }
+
+        #div2 {
+            position: absolute;
+            left: 450px;
+            top: 10px;
+            width: 400px;
+            height: 150px;
+            overflow: auto;
+        }        
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        function switchContent() {
+            var div1 = document.getElementById("div1").innerHTML;
+            var div2 = document.getElementById("div2").innerHTML;
+
+            document.getElementById("div1").innerHTML = div2;
+            document.getElementById("div2").innerHTML = div1;
+        }
+
+        document.onclick = switchContent;
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <div id="div1">
+        <p>
+            first paragraph.first paragraph.first paragraph.first paragraph.first paragraph.first paragraph.
+            first paragraph.first paragraph.first paragraph.first paragraph.
+            first paragraph.first paragraph.first paragraph.first paragraph.
+            first paragraph.first paragraph.first paragraph.first paragraph.
+        </p>
+
+        <p>
+            second paragraph. second paragraph. second paragraph. second paragraph. 
+            second paragraph. second paragraph. second paragraph. second paragraph. 
+            second paragraph. second paragraph. second paragraph. second paragraph. 
+            second paragraph. second paragraph. second paragraph. second paragraph. 
+        </p>
+    </div>
+
+    <div id="div2">
+        <p> Smaller item. </p>
+    </div>
+</body>
+</html>
