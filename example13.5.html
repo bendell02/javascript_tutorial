@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Encapsulating</title>
+
+    <style type="text/css">
+        div {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+        }
+
+        #div2 {
+            opacity: 0.0; filter: alpha(opacity=0);
+        }
+
+        #div1 img {
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=example9.12_fig01.png, sizingMethod='scale');
+        }
+
+        #div2 img {
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=example9.12_fig02.png, sizingMethod='scale');
+        }
+
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var theobjs = new Array();
+
+        function DivObj(obj) {
+            this.obj = obj;
+
+            this.getAlphaOpacity = function() {
+                var fltr = this.obj.style.filter;
+                var indx1 = fltr.indexOf("opacity=");
+                var indx2 = fltr.indexOf("");
+                fltr = fltr.substring(indx1+8, indx2) / 100;
+
+                return fltr;
+            }
+
+            this.getCSSOpacity = function() {
+                return parseFloat(this.obj.style.opacity);
+            }
+
+            // this.objGetOpacity = (this.obj.style.filter === undefined) ? this.getCSSOpacity : this.getAlphaOpacity;
+            this.objGetOpacity = this.getCSSOpacity;
+
+            this.alphaOpacity = function(value) {
+                var opacity = value*100;
+                this.obj.style.filter = "alpha(opacity=" + opacity + ")";
+            }
+
+            this.cssOpacity = function(value) {
+                this.obj.style.opacity = ""+value;
+            }
+
+            // this.objSetOpacity = (this.obj.style.filter === undefined) ? this.cssOpacity : this.alphaOpacity;
+            this.objSetOpacity = this.cssOpacity;
+        }
+
+        window.onload = function() {
+            theobjs["div1"] = new DivObj(document.getElementById("div1"));
+            theobjs["div2"] = new DivObj(document.getElementById("div2"));
+
+            theobjs["div1"].objSetOpacity(1.0);
+            theobjs["div2"].objSetOpacity(0.0);
+        }
+
+        document.onclick = function() {
+            // fade-out the div1
+            var currentOpacity = theobjs["div1"].objGetOpacity();
+
+            if (currentOpacity <= 0) {
+                document.onclick = null;
+                return;
+            }
+
+            currentOpacity -= 0.1;
+            theobjs["div1"].objSetOpacity(currentOpacity);
+
+            // display div2
+            currentOpacity = theobjs["div2"].objGetOpacity();
+
+            currentOpacity += 0.1;
+            theobjs["div2"].objSetOpacity(currentOpacity);
+        }
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <div id="div1">
+        <img src="example9.12_fig01.png" alt="" />
+    </div>
+
+    <div id="div2">
+        <img src="example9.12_fig02.png" alt="" />
+    </div>
+</body>
+</html>
