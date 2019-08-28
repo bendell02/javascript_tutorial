@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tune Object</title>
+
+    <style type="text/css">
+        
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var Tune = function(title) {
+            this.title = title;
+        } 
+
+        function printTitle() {
+            document.writeln(this.title + "<br />");
+        }
+
+        window.onload = function() {
+            Tune.prototype.print = printTitle;
+            
+            var oneTune = new Tune("One Title");
+            oneTune.print();
+
+            var anotherTune = new Tune("Another Title");
+            anotherTune.print();
+        }
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p>some content</p>
+</body>
+</html>
