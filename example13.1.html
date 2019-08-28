@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String trim</title>
+
+    <style type="text/css">
+        
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        String.prototype.trim = function() {
+            return (this.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, ""));
+        }
+
+        window.onload = function() {
+            var sObj = new String("  This is the string  ");
+            document.writeln("---" + sObj + "---" + "<br />");
+
+            var sTxt = sObj.trim();
+            document.writeln("---" + sTxt + "---");
+        }  
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p>some content</p>
+</body>
+</html>
