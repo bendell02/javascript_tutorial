@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Getters and Setters</title>
+
+    <style type="text/css">
+        
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var Tune = function() {
+        } 
+
+        function printTitle() {
+            document.writeln(this.title + "<br />");
+        }
+
+        window.onload = function() {
+            var t = Tune.prototype;
+
+            // getter and setter
+            t.__defineGetter__("title", function() { return "Title is " + this.myTitle; });
+            t.__defineSetter__("title", function(tt) {this.myTitle = tt; });
+
+            t.print = printTitle;
+            
+            var oneTune = new Tune;
+            oneTune.title = "One Title";
+            oneTune.print();
+
+            var anotherTune = new Tune;
+            anotherTune.title = "Another Title";
+            anotherTune.print();
+        }
+    //]]>
+
+    </script>
+    
+</head>
+<body>
+    <p>some content</p>
+</body>
+</html>
